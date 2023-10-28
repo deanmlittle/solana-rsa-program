@@ -1,0 +1,29 @@
+{
+    "name": "rsa-program",
+    "version": "1.0.0",
+    "main": "dist/index.js",
+    "license": "MIT",
+      "scripts": {
+        "lint:fix": "prettier */*.js \"*/**/*{.js,.ts}\" -w",
+        "lint": "prettier */*.js \"*/**/*{.js,.ts}\" --check",
+        "build": "yarn build:ts && yarn build:rust",
+        "build:ts": "tsc",
+        "build:rust": "cargo build-bpf",
+        "test": "ts-mocha tests/*.ts",
+        "deploy": "solana program deploy ./target/deploy/rsa.so",
+        "deploy:localhost": "solana program deploy ./target/deploy/rsa.so -u localhost"
+    },
+    "dependencies": {
+        "@solana/web3.js": "1.87.3"
+    },
+    "devDependencies": {
+        "chai": "^4.3.4",
+        "mocha": "^9.0.3",
+        "ts-mocha": "^10.0.0",
+        "@types/bn.js": "^5.1.0",
+        "@types/chai": "^4.3.0",
+        "@types/mocha": "^9.0.0",
+        "typescript": "^4.3.5",
+        "prettier": "^2.6.2"
+    }
+}
